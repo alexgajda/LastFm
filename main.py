@@ -37,4 +37,23 @@ mycursor = mydb.cursor()
 #   mycursor.execute("INSERT INTO users (user_id, username, age) VALUES (%s, %s, %s)", (user_id, random_name, random_age))
 #   mydb.commit()
 
-
+# INSERT band data
+# band_data = [
+#     (1, 'Coldplay', 'rock'),
+#     (2, 'Paramore', 'rock'),
+#     (3, 'Drake', 'hip-hop'),
+#     (4, 'Future', 'hip-hop'),
+#     (5, 'JAY-Z', 'hip-hop'),
+#     (6, 'Nas', 'hip-hop'),
+#     (7, 'Eminem', 'rap'),
+#     (8, '2Pac', 'rap'),
+#     (9, 'Foals', 'indie'),
+#     (10, 'Bastille', 'indie'),
+#     (11, 'Radiohead', 'alternative'),
+#     (12, 'Gorillaz', 'alternative'),
+#     (13, 'Beck', 'alternative')
+# ]
+#
+# sql = "INSERT INTO band (band_id, band_name, genre) VALUES (%s, %s, %s)"
+# mycursor.executemany(sql, band_data)
+# mydb.commit()
