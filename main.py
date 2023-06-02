@@ -237,27 +237,99 @@ mycursor = mydb.cursor()
 
 
 ##############################    EXERICE 4     #########################################################
+############## people's age #############
+# # Fetch data from the people table
+# people_query = "SELECT age FROM people"
+# people_df = pd.read_sql(people_query, mydb)
+#
+# # Prints people's age statistics
+# print("Users Age Statistics:\n" + people_df["age"].describe().to_string())
+#
+#
+# ######### userbands ###############
+# # Fetch data from the userbands table
+# userbands_query = "SELECT * FROM userband"
+# userbands_df = pd.read_sql(userbands_query, mydb)
+#
+# # Fetch the bands DataFrame
+# bands_df = pd.read_sql("SELECT band_id, band_name FROM band0", mydb)
+#
+# # Merge userbands_df with bands_df based on band_id
+# merged_df = pd.merge(userbands_df, bands_df, on='band_id')
+#
+# # Count the occurrences of each band_name
+# band_counts = merged_df['band_name'].value_counts()
+#
+# # Print the band counts
+# print("\n" + band_counts.to_string())
+#
+#
+# ############ userrecords ##############
+# # Fetch data from the userrecords table
+# userrecords_query = "SELECT * FROM userrecords"
+# userrecords_df = pd.read_sql(userrecords_query, mydb)
+#
+#
+# # Fetch the records DataFrame
+# records_df = pd.read_sql("SELECT record_id, record_name FROM records0", mydb)
+#
+# # Merge
+# merged_df = pd.merge(userrecords_df, records_df, on='record_id')
+#
+# # Count the occurrences
+# records_counts = merged_df['record_name'].value_counts()
+#
+# # Print
+# print("\n" + records_counts.to_string())
 
-# Fetch data from the people table
-people_query = "SELECT age FROM people"
-people_df = pd.read_sql(people_query, mydb)
-
-# Fetch data from the userbands table
-userbands_query = "SELECT * FROM userband"
-userbands_df = pd.read_sql(userbands_query, mydb)
-
-# Fetch data from the userrecords table
-userrecords_query = "SELECT * FROM userrecords"
-userrecords_df = pd.read_sql(userrecords_query, mydb)
-
-# Prints people's age statistics
-print("Users Age Statistics:\n" + people_df["age"].describe().to_string())
-
-# Fetch all the band list
-bands_df = pd.read_sql("SELECT band_id FROM band0", mydb)
-print(bands_df)
 
 
+##############################    EXERICE 5     #########################################################
+####################### age ##########################
+# # Define the age groups
+# age_groups = [10, 25, 40, 50, 65]
+#
+# # Cut the age column into groups
+# people_df['age_group'] = pd.cut(people_df['age'], bins=age_groups)
+#
+# # Count the number of individuals in each age group
+# age_counts = people_df['age_group'].value_counts().sort_index()
+#
+# # Create a bar plot
+# age_counts.plot(kind='bar')
+#
+# # Set the title and labels
+# plt.title('Age Group Counts')
+# plt.xlabel('Age Group')
+# plt.ylabel('Count')
+#
+# # Display the plot
+# plt.show()
+#
+# ####################### bands ##########################
+# # Create a bar plot
+# band_counts.plot(kind='bar')
+#
+# # Set the title and labels
+# plt.title('Band Counts')
+# plt.xlabel('Band')
+# plt.ylabel('Count')
+#
+# # Display the plot
+# plt.show()
+#
+# ####################### records ##########################
+# # Create a bar plot
+# records_counts.plot(kind='bar')
+#
+# # Set the title and labels
+# plt.title('record Counts')
+# plt.xlabel('Record')
+# plt.ylabel('Count')
+#
+# # Display the plot
+# plt.show()
 
 
 
+##############################    EXERICE 6     #########################################################
