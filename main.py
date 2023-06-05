@@ -2,6 +2,7 @@ from datetime import datetime
 
 import sns as sns
 from faker import Faker
+from statsmodels.tsa.seasonal import seasonal_decompose
 import networkx as nx
 import numpy as np
 import pandas as pd
@@ -11,9 +12,11 @@ import mysql.connector
 from faker import Faker
 import random as rand
 import requests
+from matplotlib import pyplot
+from statsmodels.tsa.arima.model import ARIMA
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 
-#community_graph= nx.barabasi_albert_graph(20, 3)
-#nx.draw(community_graph, with_labels=True)
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -23,7 +26,6 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-
 
 
 ##############################    EXERICE 1     #########################################################
@@ -333,3 +335,45 @@ mycursor = mydb.cursor()
 
 
 ##############################    EXERICE 6     #########################################################
+
+# # URL of the data file
+# url = 'https://drive.google.com/uc?id=1dyalUh1kpCC6hG7U__zrWecbWZfxWlB9'
+#
+# # Read the data into a pandas DataFrame and set the 'date' column as the index
+# series = pd.read_csv(url, parse_dates=[0], index_col=0)
+#
+# # Convert the 'values' column to float
+# series['values'] = series['values'].astype(float)
+#
+# # # Perform seasonal decomposition
+# # result = seasonal_decompose(series['values'], model='additive')
+# #
+# # # Plot the decomposition components
+# # result.plot()
+# # # Display the plot
+# # plt.show()
+#
+#
+# ##############################    EXERICE 7     #########################################################
+# # Split the data into training and testing sets
+# train_size = int(len(series) * 0.76)
+# train_data, test_data = series[:train_size], series[train_size:]
+#
+# # Train the ARIMA model
+# model = ARIMA(train_data, order=(1, 0, 0))  # Adjust the order as needed
+# model_fit = model.fit()
+#
+# # Make predictions on the testing data
+# predictions = model_fit.predict(start=len(train_data), end=len(series)-1)
+#
+# # Evaluate the model performance
+# mse = mean_squared_error(test_data, predictions)
+# print("Mean Squared Error:", mse)
+
+
+##############################    EXERICE 8     #########################################################
+
+community_graph= nx.barabasi_albert_graph(20, 3)
+nx.draw(community_graph, with_labels=True)
+plt.show()
+
